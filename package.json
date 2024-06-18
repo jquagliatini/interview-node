@@ -1,0 +1,14 @@
+{
+  "name": "code-review",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@angular/core": "^18.0.3",
+    "@angular/router": "^18.0.3",
+    "rxjs": "^7.8.1"
+  }
+}
