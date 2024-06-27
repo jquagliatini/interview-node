@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs'; 
 
-export declare class ProductService {
+export interface ProductService {
     getProduct(id: string): Observable<{ id: string }>;
 }

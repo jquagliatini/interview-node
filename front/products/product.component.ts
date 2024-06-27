@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from './extra/authentication.service';
-import {ProductService} from './extra/product.service';
+import {AuthenticationService} from '../shared/authentication.service';
+import {ProductService} from './product.service';
 
 @Component({
   selector: 'app-product'

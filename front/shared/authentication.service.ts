@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs'; 
 
-export declare class AuthenticationService {
+export interface AuthenticationService {
     isAuthenticated(): Observable<boolean>;
 }
