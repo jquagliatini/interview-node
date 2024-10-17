@@ -1,4 +1,4 @@
-import { TypeMaterial } from "./domain/material";
+import { TypeMaterialEnum } from "./domain/material";
 import { Product, ProductItem } from "./domain/product";
 
 export class CalculatePriceProduct {
@@ -8,13 +8,13 @@ export class CalculatePriceProduct {
     product.items.reduce((i: ProductItem) => {
       i.materials.forEach((m) => {
         const atLeastOne = i.quantiy > 0
-        const isSolidMaterialValid = (m.type == TypeMaterial.Solid && m.Weight > 0 && m.Dimension > 0);
-        const isLiquidMaterialValid = (m.type == TypeMaterial.Liquid && m.Dimension > 0 && m.Weight > 0);
+        const isSolidMaterialValid = (m.type == TypeMaterialEnum.Solid && m.weight > 0 && m.dimension > 0);
+        const isLiquidMaterialValid = (m.type == TypeMaterialEnum.Liquid && m.dimension > 0 && m.weight > 0);
 
         if (
           atLeastOne && (isSolidMaterialValid || isLiquidMaterialValid)
         ) {
-          price += m.Cost * m.Interest;
+          price += m.cost * m.interest;
         }
       });
     });

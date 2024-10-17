@@ -1,12 +1,12 @@
-export declare enum TypeMaterial {
+export enum TypeMaterialEnum {
     Solid,
     Liquid,
 }
 
-export declare class Material {
-    readonly type: TypeMaterial;
-    readonly Weight: number;
-    readonly Dimension: number;
-    readonly Cost: number;
-    readonly Interest: number;
+export class Material {
+    readonly type: TypeMaterialEnum;
+    readonly weight: number;
+    readonly dimension: number;
+    readonly cost: number;
+    readonly interest: number;
 }
