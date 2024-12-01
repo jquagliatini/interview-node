@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs'; 
+import { Observable } from 'rxjs';
 
 export interface ProductService {
-    getProduct(id: string): Observable<{ id: string }>;
+  getProduct(id: string): Observable<{ id: string }>;
 }

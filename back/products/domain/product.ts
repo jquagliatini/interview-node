@@ -1,4 +1,4 @@
-import { Material } from "./material";
+import { Material } from './material';
 
 export class ProductItem {
   readonly id: string;

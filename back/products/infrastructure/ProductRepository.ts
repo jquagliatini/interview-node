@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 export class ProductRepository {
   public async getProduct(prisma: PrismaClient): Promise<any[]> {
@@ -6,13 +6,13 @@ export class ProductRepository {
     const qur = await prisma.$queryRaw<any>`SELECT * FROM Product WHERE price > 0;`;
 
     for (const r of qur) {
-      r.Items = await this.getItemsFromProductId(prisma, r.id);
+      r.items = await this.getItemsFromProductId(prisma, r.id);
     }
 
     return qur;
   }
 
-  public getItemsFromProductId(prisma: PrismaClient,id: string): Promise<any> {
-    return prisma.$queryRawUnsafe(`SELECT * FROM ProductItem WHERE productId = ${id}`);
+  public getItemsFromProductId(prisma: PrismaClient, id: unknown): Promise<any> {
+    return prisma.$queryRaw`SELECT * FROM ProductItem WHERE "productId" = ${id}`;
   }
 }

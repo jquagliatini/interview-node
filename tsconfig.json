@@ -8,6 +8,11 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["back/*"],
+      "@shared/*": ["front/shared/*"]
+    }
   }
 }

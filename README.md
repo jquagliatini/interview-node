@@ -16,11 +16,11 @@ composed of rubber tires.
 classDiagram
     direction RL
 
-    MaterialTypeEnum "1" *-- "1" Material
+    TypeMaterialEnum "1" *-- "1" Material
     Material "*" *-- "1" ProductItem
     ProductItem "*" *-- "1" Product
 
-    class MaterialTypeEnum {
+    class TypeMaterialEnum {
         <<enumeration>>
         Solid
         Liquid
@@ -29,7 +29,7 @@ classDiagram
 
     class Material {
         string id
-        MaterialTypeEnum type
+        TypeMaterialEnum type
         number cost
         number interest
     }
