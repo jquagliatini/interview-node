@@ -1,35 +1,26 @@
-import { Body, Controller, Param, Post, Get } from '@nestjs/common';
+import { Body, Controller, Param, Put, Get, UseFilters } from '@nestjs/common';
 
-import { ProductService } from '@/products/domain/product.service';
-import { UpdateCostDto } from '@/products/dtos/update-cost.dto';
+import { UpdatePriceDto } from '@/products/dtos/update-price.dto';
+import { DomainExceptionFilter } from '@/products/infrastructure/domain-exception.filter';
+import { ProductService } from '@/products/infrastructure/product.service';
 
-@Controller('prod')
+@Controller('products')
+@UseFilters(DomainExceptionFilter)
 export class ProductController {
-  service: ProductService;
+  constructor(private readonly productService: ProductService) {}
 
-  constructor() {
-    this.service = new ProductService();
-  }
-
-  @Post(':id/:itemId/:materialId')
+  @Put(':id/items/:itemId/materials/:materialId/cost')
   updatePrice(
-    @Param('id') id: string,
+    @Param('id') productId: string,
     @Param('itemId') itemId: string,
     @Param('materialId') materialId: string,
-    @Body() updatePriceDTO: UpdateCostDto,
-  ) {
-    if (typeof updatePriceDTO.cost !== 'number') {
-      throw new Error('Price is missing or invalid');
-    }
-    if (typeof updatePriceDTO.interest !== 'number') {
-      throw new Error('Interest is missing or invalid');
-    }
-
-    return this.service.updatePrice(id, materialId, itemId, updatePriceDTO);
+    @Body() { cost, interest }: UpdatePriceDto,
+  ): Promise<number> {
+    return this.productService.updatePrice({ productId, itemId, materialId, cost, interest });
   }
 
   @Get(':id')
   getProduct(@Param('id') id: string) {
-    return this.service.getProduct(id);
+    return this.productService.getProduct(id);
   }
 }

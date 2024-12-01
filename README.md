@@ -60,8 +60,8 @@ Please provide any feedback that seem relevant to you regarding (but not limited
 ## Back (Nest.js)
 
 - [ ] [product-controller](./back/products/product-controller.ts)
-- [ ] [calculate-price](./back/products/calculate-price.ts)
-- [ ] [ProductRepository](./back/products/infrastructure/ProductRepository.ts)
+- [ ] [calculate-price](./back/products/domain/product.ts)
+- [ ] [ProductRepository](./back/products/infrastructure/product.repository.ts)
 
 ## Front (Angular)
 

@@ -1,5 +1,7 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface AuthenticationService {
+@Injectable({ providedIn: 'root' })
+export declare class AuthenticationService {
   isAuthenticated(): Observable<boolean>;
 }

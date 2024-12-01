@@ -1,35 +1,37 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '@shared/authentication.service';
+import { Component, input, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { finalize } from 'rxjs';
 
 import { ProductService } from './product.service';
 
 @Component({
+  standalone: true,
   selector: 'app-product',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    @if (isLoading()) {
+      <p>Loading...</p>
+    } @else {
+      <p>{{ product()?.name }}</p>
+    }
+  `,
 })
-export class ProductComponent {
-  id: any;
-  product: any;
+export class ProductComponent implements OnInit {
+  readonly id = input.required<string>();
+  private readonly productService = inject(ProductService);
 
-  constructor(
-    public activatedRoute: ActivatedRoute,
-    public router: Router,
-    public authService: AuthenticationService,
-    public productService: ProductService,
-  ) {
-    this.redirectIfNotAuthenticated();
-  }
+  readonly isLoading = signal(true);
+  readonly product = signal<{ name: string } | null>(null);
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params) => (this.id = params.id));
-    this.productService.getProduct(this.id).subscribe((product) => (this.product = product));
-  }
-
-  private redirectIfNotAuthenticated(): any {
-    this.authService.isAuthenticated().subscribe((isAuthenticated) => {
-      if (!isAuthenticated) {
-        this.router.navigate(['/']);
-      }
-    });
+    this.productService
+      .getProduct(this.id())
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+        }),
+      )
+      .subscribe((product) => {
+        this.product.set(product);
+      });
   }
 }

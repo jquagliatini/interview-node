@@ -1,5 +1,12 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface ProductService {
-  getProduct(id: string): Observable<{ id: string }>;
+@Injectable({ providedIn: 'root' })
+export declare class ProductService {
+  getProduct(id: string): Observable<Product>;
 }
+
+export type Product = {
+  id: string;
+  name: string;
+};
