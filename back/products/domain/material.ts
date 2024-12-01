@@ -5,9 +5,10 @@ export enum TypeMaterialEnum {
 }
 
 export class Material {
-  readonly type: TypeMaterialEnum;
-  readonly weight: number;
-  readonly dimension: number;
-  readonly cost: number;
-  readonly interest: number;
+  id: string;
+  type: TypeMaterialEnum;
+  weight: number;
+  dimension: number;
+  cost: number;
+  interest: number;
 }

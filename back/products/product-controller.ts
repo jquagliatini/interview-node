@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Param, Post } from "@nestjs/common";
 import { ProductService } from "./domain/product.service";
-import { CalculatePriceProduct } from "./calculate-price";
 import { UpdateCostDto } from "./dtos/update-cost.dto";
 
 @Controller("prod")
@@ -26,16 +25,5 @@ export class ProductController {
     }
 
     return this.service.updatePrice(id, materialId, itemId, updatePriceDTO);
-  }
-
-  @Get("get-price/:id")
-  getPrice(@Param("id") id: string) {
-    const service = new CalculatePriceProduct();
-    return this.getProduct(id).then(service.calculatePriceFromProduct);
-  }
-
-  @Get(":id")
-  getProduct(@Param("id") id: string) {
-    return this.service.getProduct(id);
   }
 }
