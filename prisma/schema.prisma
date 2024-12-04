@@ -9,7 +9,8 @@ datasource db {
 }
 
 model Product {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id    String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  price Float
 
   productItems ProductItem[]
 }

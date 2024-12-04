@@ -4,6 +4,7 @@ CREATE TYPE "TypeMaterialEnum" AS ENUM ('solid', 'liquid', 'gas');
 -- CreateTable
 CREATE TABLE "Product" (
     "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "price" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

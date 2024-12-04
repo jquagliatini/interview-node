@@ -3,7 +3,7 @@
 A new full stack developer just arrived in your team. In the context of an e-commerce
 application, with a product catalog, they were asked to implement the following feature:
 
-> As a USER I want to update the Cost and Interest of a Material to update a Product's overall price.
+> As a USER I want to update the Cost and Interest of a Material and thus update a Product's overall price.
 >
 > When I updated the Cost and Interest
 > Then I should see the updated Product's price.
@@ -59,7 +59,7 @@ Please provide any feedback that seem relevant to you regarding (but not limited
 
 ## Back (Nest.js)
 
-- [ ] [product-controller](./back/products/product-controller.ts)
+- [ ] [material-controller](./back/products/material-controller.ts)
 - [ ] [calculate-price](./back/products/calculate-price.ts)
 - [ ] [ProductRepository](./back/products/infrastructure/ProductRepository.ts)
 

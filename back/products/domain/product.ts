@@ -7,5 +7,6 @@ export class ProductItem {
 }
 
 export class Product {
+  readonly id: string;
   readonly items: readonly ProductItem[];
 }
